@@ -53,8 +53,10 @@ fun quadraticRootProduct(a: Double, b: Double, c: Double): Double {
  * Пример главной функции
  */
 fun main() {
-    val x1x2 = quadraticRootProduct(1.0, 13.0, 42.0)
-    println("Root product: $x1x2")
+    /*val x1x2 = quadraticRootProduct(1.0, 13.0, 42.0)
+    println("Root product: $x1x2")*/
+    val result = angleInRadian(36, 14, 35)
+    println("Result: $result")
 }
 
 /**
@@ -65,7 +67,7 @@ fun main() {
  * Пользователь задает время в часах, минутах и секундах, например, 8:20:35.
  * Рассчитать время в секундах, прошедшее с начала суток (30035 в данном случае).
  */
-fun seconds(hours: Int, minutes: Int, seconds: Int): Int = TODO()
+fun seconds(hours: Int, minutes: Int, seconds: Int): Int = hours * 3600 + minutes * 60 + seconds
 
 /**
  * Тривиальная (1 балл)
@@ -74,15 +76,16 @@ fun seconds(hours: Int, minutes: Int, seconds: Int): Int = TODO()
  * Определить длину того же отрезка в метрах (в данном случае 18.98).
  * 1 сажень = 3 аршина = 48 вершков, 1 вершок = 4.445 см.
  */
-fun lengthInMeters(sagenes: Int, arshins: Int, vershoks: Int): Double = TODO()
+fun lengthInMeters(sagenes: Int, arshins: Int, vershoks: Int): Double =
+    (sagenes * 48 + arshins * 48 / 3 + vershoks) * 4.445 / 100
 
 /**
  * Тривиальная (1 балл)
  *
  * Пользователь задает угол в градусах, минутах и секундах (например, 36 градусов 14 минут 35 секунд).
- * Вывести значение того же угла в радианах (например, 0.63256).
+ * Вывести значение того же угла в радианах (например, 0.63256). градусы + (минуты + секунды/60)/60
  */
-fun angleInRadian(deg: Int, min: Int, sec: Int): Double = TODO()
+fun angleInRadian(deg: Int, min: Int, sec: Int): Double = (deg + (min.toDouble() + sec.toDouble() / 60) / 60) * PI / 180
 
 /**
  * Тривиальная (1 балл)
@@ -98,7 +101,14 @@ fun trackLength(x1: Double, y1: Double, x2: Double, y2: Double): Double = TODO()
  * Пользователь задает целое число, большее 100 (например, 3801).
  * Определить третью цифру справа в этом числе (в данном случае 8).
  */
-fun thirdDigit(number: Int): Int = TODO()
+fun thirdDigit(number: Int): Int {
+    var k = number % 1000
+    for (i in 1..2) {
+        val z = k / 10
+        k = z
+    }
+    return k
+}
 
 /**
  * Простая (2 балла)
@@ -107,7 +117,8 @@ fun thirdDigit(number: Int): Int = TODO()
  * прибыл на станцию назначения в h2 часов m2 минут того же дня (например в 13:01).
  * Определите время поезда в пути в минутах (в данном случае 216).
  */
-fun travelMinutes(hoursDepart: Int, minutesDepart: Int, hoursArrive: Int, minutesArrive: Int): Int = TODO()
+fun travelMinutes(hoursDepart: Int, minutesDepart: Int, hoursArrive: Int, minutesArrive: Int): Int =
+    (hoursArrive * 60 + minutesArrive) - (hoursDepart * 60 + minutesDepart)
 
 /**
  * Простая (2 балла)
