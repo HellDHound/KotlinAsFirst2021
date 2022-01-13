@@ -93,7 +93,7 @@ fun angleInRadian(deg: Int, min: Int, sec: Int): Double = (deg + (min.toDouble()
  * Найти длину отрезка, соединяющего точки на плоскости с координатами (x1, y1) и (x2, y2).
  * Например, расстояние между (3, 0) и (0, 4) равно 5
  */
-fun trackLength(x1: Double, y1: Double, x2: Double, y2: Double): Double = TODO()
+fun trackLength(x1: Double, y1: Double, x2: Double, y2: Double): Double = sqrt(sqr(x2 - x1) + sqr(y2 - y1))
 
 /**
  * Простая (2 балла)
@@ -127,7 +127,14 @@ fun travelMinutes(hoursDepart: Int, minutesDepart: Int, hoursArrive: Int, minute
  * Сколько денег будет на счету через 3 года (с учётом сложных процентов)?
  * Например, 100 рублей под 10% годовых превратятся в 133.1 рубля
  */
-fun accountInThreeYears(initial: Int, percent: Int): Double = TODO()
+fun accountInThreeYears(initial: Int, percent: Int): Double {
+    var result: Double = initial.toDouble()
+    for (i in 1..3) {
+        val a: Double = result + result / 100 * percent
+        result = a
+    }
+    return result
+}
 
 /**
  * Простая (2 балла)
@@ -135,4 +142,13 @@ fun accountInThreeYears(initial: Int, percent: Int): Double = TODO()
  * Пользователь задает целое трехзначное число (например, 478).
  * Необходимо вывести число, полученное из заданного перестановкой цифр в обратном порядке (например, 874).
  */
-fun numberRevert(number: Int): Int = TODO()
+fun numberRevert(number: Int): Int {
+    var numb: Int = number
+    var revert = ""
+    for (i in 1..3){
+        revert += (numb % 10).toString()
+        val a = numb / 10
+        numb = a
+    }
+    return revert.toInt()
+}
